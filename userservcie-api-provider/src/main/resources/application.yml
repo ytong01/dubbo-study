@@ -1,0 +1,26 @@
+server:
+  port: 9090
+dubbo:
+  application:
+    id: user-service
+    name: user-service
+#    qos-enable: true
+#    qos-port: 11111
+  registry:
+    address: zookeeper://10.129.12.55:2181
+#    address: zookeeper://192.168.152.138:2181?backup=192.168.152.138:2182,192.168.152.138:2183
+#    check: false
+#    protocol: zookeeper
+  provider:
+    protocol: dubbo
+    filter: authFilter
+    timeout: 10000
+  scan:
+    base-packages: com.rose
+  protocol:
+    #启用kryo序列化方式
+#    serialization: kryo
+    name: dubbo
+#    id: dubbo
+#    status: server
+    port: 20880
